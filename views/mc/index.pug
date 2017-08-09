@@ -6,10 +6,10 @@ block content
   p Welcome to #{title}
   
   
-  script(src='/javascripts/soundFont.js')
+  //- script(src='/javascripts/soundFont.js')
   //- script(src='/javascripts/midijs.js')
   //- script(src='http://www.midijs.net/lib/midi.js')
-  script(src='//www.midijs.net/lib/midi.js')
+  //- script(src='//www.midijs.net/lib/midi.js')
   script.
     let action = !{JSON.stringify(action)};
     //- let note = !{JSON.stringify(note)};
@@ -21,7 +21,14 @@ block content
     let song = !{JSON.stringify(songData)};
     console.log(song);
     if(song == "play"){
-     MIDIjs.play('/midi/'+action);
+    var script = document.createElement('script');
+    script.src = "//www.midijs.net/lib/midi.js";
+    console.log(script);
+      script.onload = function () {
+      console.log("loaded");
+        MIDIjs.play('/midi/'+action);
+      };
+      document.head.appendChild(script);
     }
     //- let melody = song[0];
     //- let chords = song[1];
