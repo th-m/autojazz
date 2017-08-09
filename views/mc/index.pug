@@ -1,0 +1,62 @@
+extends layout
+
+block content
+  
+  h1= title
+  p Welcome to #{title}
+  
+  
+  script(src='/javascripts/soundFont.js')
+  script(src='http://www.midijs.net/lib/midi.js')
+  script.
+    let action = !{JSON.stringify(action)};
+    //- let note = !{JSON.stringify(note)};
+    //- console.log('/'+note);
+    //- MIDIjs.play('/midi/juke.midi');
+    //- MIDIjs.play('/midi/'+note); // This will actually play the midi file.
+    //- let ac = new AudioContext()
+    //- let ac2 = new AudioContext()
+    let song = !{JSON.stringify(songData)};
+    console.log(song);
+    if(song == "play"){
+     MIDIjs.play('/midi/'+action);
+    }
+    //- let melody = song[0];
+    //- let chords = song[1];
+    
+    //- var snd1  = new Audio();
+    //- var src1  = document.createElement("source");
+    //- src1.type = "audio/mpeg";
+    //- src1.src  = "audio/Dombra.mp3";
+    //- snd1.appendChild(src1);
+    //- 
+    //- var snd2  = new Audio();
+    //- var src2  = document.createElement("source");
+    //- src2.type = "audio/mpeg";
+    //- src2.src  = "audio/(TESBIHAT).mp3";
+    //- snd2.appendChild(src2);
+    
+    //- function playAllNotes(part,sound,index) {
+    //-     if(part.length > index) {
+    //-         setTimeout(function() {
+    //-             if(part[index].note){
+    //-               part[index].note.forEach(n=>{
+    //-                 console.log(n);
+    //-                 sound.stop();
+    //-                 sound.play(n);
+    //-               })
+    //-             }
+    //-             playAllNotes(part, sound, ++index);
+    //-         }, part[index].length * 10);
+    //-     }else{
+    //-       sound.stop();
+    //-     }
+    //- }
+    //- 
+    //- Soundfont.instrument(ac, 'marimba', { soundfont: 'MusyngKite' }).then(function (sound) {
+    //-   playAllNotes(chords,sound,0);
+    //- });
+    //- Soundfont.instrument(ac2, 'trumpet', { soundfont: 'MusyngKite' }).then(function (sound) {
+    //-   playAllNotes(melody,sound,0);
+    //- });
+    //- console.log(song);
